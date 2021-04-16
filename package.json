@@ -1,0 +1,19 @@
+{
+  "name": "roku_client_w21",
+  "version": "1.0.0",
+  "description": "roku front end",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app",
+    "start-dev": "nodemon app"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "hbs": "^4.1.1"
+  },
+  "devDependencies": {
+    "http-proxy-middleware": "^1.0.6"
+  }
+}
