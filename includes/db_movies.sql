@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 18, 2021 at 01:03 AM
+-- Generation Time: Apr 18, 2021 at 02:17 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.4.9
 
@@ -1080,10 +1080,8 @@ CREATE TABLE IF NOT EXISTS `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`user_id`, `user_fname`, `user_name`, `user_pass`, `user_email`, `user_date`, `user_ip`, `user_level`, `login_time`, `user_avatar`, `user_admin`, `user_access`, `type`) VALUES
-(1, 'Ashwin', 'admin', 'admin123', 'ashwinakx12@gmail.com', '2019-02-01 19:07:35', '::1', 1, '2021-04-13 23:19:40', 'count_olaf.jpg', 1, 5, 'Adult'),
-(2, 'test111', 'test', 'test123', 't@.com', '2021-03-16 01:39:33', '::1', 0, '2021-04-13 05:38:16', '', 0, 5, ''),
-(3, 'asd', 'asd', 'asdasd', 'asd@gafs', '2021-04-12 23:39:12', '::1', 0, '2021-04-13 06:14:11', '', 0, 5, ''),
-(4, 'some', 'something', 'some123', 'asasd', '2021-04-13 00:45:00', '::1', NULL, '2021-04-13 23:19:30', '', 0, 5, '');
+(1, 'Ashwin', 'admin', 'admin123', 'ashwinakx12@gmail.com', '2019-02-01 19:07:35', '::1', 1, '2021-04-13 23:19:40', 'profile_1.jpg', 1, 5, 'Adult'),
+(2, 'test111', 'test', 'test123', 't@.com', '2021-03-16 01:39:33', '::1', 0, '2021-04-13 05:38:16', 'profile_2.jpg', 0, 5, 'Kid');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
