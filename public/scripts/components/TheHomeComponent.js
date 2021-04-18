@@ -2,10 +2,7 @@ export default {
     name: "TheHomeComponent",
 
     props: ['currentuser'],
-   data: {
-       filteredMovies: []
-   }
-,
+  
     template: `
     <div class="container">
         <div class="row">
@@ -26,10 +23,10 @@ export default {
                 <ul class="media-type">
                     <li v-for="media in mediaTypes" :data-type="media.description">
                         <span>
-                            <i v-bind:class="[media.iconClass]"></i>
+                            <i @click.prevent ="filterContent(content)" v-bind:class="[media.iconClass]"></i>
                         </span>
                         
-                        <span class="d-none d-md-block">{{ media.description }}</span>
+                        <span @click.prevent ="filterContent(content)"  class="d-none d-md-block">{{ media.description }}</span>
                     </li>
                 </ul>
             </nav>
@@ -55,7 +52,7 @@ export default {
                 </ul>
 
                 <div class="thumb-wrapper clearfix">
-                    <img v-for="media in retrievedMedia" :src="'images/' + media.movies_cover" alt="media thumb" class="img-thumbnail rounded float-left media-thumb" @click="switchCurrentMedia(media)">
+                    <img  v-for="media in filteredMovies"  :src="'images/' + media.movies_cover" alt="media thumb" class="img-thumbnail rounded float-left media-thumb" @click="switchCurrentMedia(media)">
                 </div>
             </div>       
         </div> <!-- end 2-up for media info -->
@@ -66,15 +63,17 @@ export default {
         return {
             // push first (or random) media object here (selected / filtered on create)
             currentMediaDetails: {},
-
+            content: ['video', 'audio', 'tv'],
             // could add more media types here in future
             mediaTypes: [
                 { iconClass: "fas fa-headphones", description: "audio" },
                 { iconClass: "fas fa-film", description: "video" },
-                { iconClass: "fas fa-tv", description: "television" }
+                { iconClass: "fas fa-tv", description: "tv" }
             ],
 
             retrievedMedia: [],
+            filteredMovies: [],
+            filteredCon: []
         }
     },
 
@@ -91,17 +90,32 @@ export default {
             fetch(url)
             .then(res => res.json())
             .then(data => {
-                this.retrievedMedia = data;
+                this.retrievedMedia = this.filteredMovies = data;
                 this.currentMediaDetails = data[Math.floor(Math.random() * data.length)];
             })
             .catch(err => console.error(err));
         },
         
-        filterMovies(genre){
-            if(genre === 'all'){ this.filteredMovies = this.retrievedMedia;
-            return;}
-this.filteredMovies = this.retrievedMedia.filter(movie => movie.genre_name.toLowerCase().includes(genre));
 
+        filterContent(contype){
+            if(contype === 'all')
+            { this.filteredCon = this.filteredMovies;
+         debugger;
+            return;
+        }
+this.filteredCon = this.filteredMovies.filter(movie => movie.description.toLowerCase().includes(description));
+//debugger;
+        },
+        
+
+        filterMovies(genre){
+            if(genre === 'all')
+            { this.filteredMovies = this.retrievedMedia;
+            //    debugger;
+            return;
+        }
+this.filteredMovies = this.retrievedMedia.filter(movie => movie.genre_name.toLowerCase().includes(genre));
+//debugger;
         },
         switchCurrentMedia(media){
             this.currentMediaDetails = media;
